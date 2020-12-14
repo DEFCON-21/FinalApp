@@ -30,34 +30,36 @@ class _TagsState extends State<Tags> {
   }
 
   Widget _buildTile(Tag tag) {
-    return Container(
-      margin: EdgeInsets.only(
-        left: kSpacingUnit,
-      ),
-      height: kSpacingUnit * 3,
-      width: kSpacingUnit * 12,
-      decoration: BoxDecoration(
-        color: kAccentColor,
-        borderRadius: BorderRadius.circular(kSpacingUnit * 3),
-      ),
-      child: Center(
-        child: Row(
-          children: [
-            SizedBox(width: kSpacingUnit),
-            Text(
-              tag.tag,
-              style: kCaptionTextStyle.copyWith(
-                color: Colors.white,
+    return InkWell(
+      child: Container(
+        margin: EdgeInsets.only(
+          left: kSpacingUnit,
+        ),
+        height: kSpacingUnit * 4,
+        width: kSpacingUnit * 12,
+        decoration: BoxDecoration(
+          color: kAccentColor,
+          borderRadius: BorderRadius.circular(kSpacingUnit * 3),
+        ),
+        child: Center(
+          child: Row(
+            children: [
+              SizedBox(width: kSpacingUnit),
+              Text(
+                tag.tag,
+                style: kCaptionTextStyle.copyWith(
+                  color: Colors.white,
+                ),
               ),
-            ),
-            const Spacer(),
-            Icon(
-              Icons.keyboard_arrow_right,
-              color: Colors.white,
-              size: 15,
-            ),
-            SizedBox(width: kSpacingUnit * 0.5),
-          ],
+              const Spacer(),
+              Icon(
+                Icons.keyboard_arrow_right,
+                color: Colors.white,
+                size: 15,
+              ),
+              SizedBox(width: kSpacingUnit * 0.5),
+            ],
+          ),
         ),
       ),
     );
