@@ -50,13 +50,10 @@ class _QuotecardState extends State<Quotecard> {
   Widget buildTile(Quote quote) {
     return Container(
       height: 180.w,
-      margin: EdgeInsets.symmetric(vertical: kSpacingUnit),
-      decoration: BoxDecoration(
-        boxShadow: [kCardShadow],
-      ),
+      margin: EdgeInsets.symmetric(vertical: kSpacingUnit * 2),
       child: OpenContainer(
-        transitionType: ContainerTransitionType.fadeThrough,
-        transitionDuration: const Duration(milliseconds: 400),
+        transitionType: ContainerTransitionType.fade,
+        transitionDuration: const Duration(milliseconds: 500),
         openColor: kSilverColor,
         openElevation: 0,
         openBuilder: (context, action) {
@@ -68,6 +65,7 @@ class _QuotecardState extends State<Quotecard> {
           return Container(
             padding: EdgeInsets.all(kSpacingUnit * 2),
             decoration: BoxDecoration(
+              // boxShadow: [kCardShadow],
               color: Colors.white,
               borderRadius: BorderRadiusDirectional.circular(kSpacingUnit * 3),
             ),
@@ -76,8 +74,11 @@ class _QuotecardState extends State<Quotecard> {
               children: [
                 Row(
                   children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/nigdp.jpg'),
+                    Hero(
+                      tag: quote.quotation + quote.number,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/nigdp.jpg'),
+                      ),
                     ),
                     SizedBox(width: kSpacingUnit),
                     Text(
@@ -93,10 +94,13 @@ class _QuotecardState extends State<Quotecard> {
                   quote.quotation,
                   style: kSubTitleTextStyle,
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                  maxLines: 1,
                   softWrap: false,
                 ),
-                Divider(height: kSpacingUnit * 2),
+                Divider(
+                  height: kSpacingUnit * 2,
+                  thickness: 1.5,
+                ),
                 Text(
                   quote.author + ' - ' + quote.number,
                   style: kCaptionTextStyle,
@@ -140,27 +144,24 @@ class _QuotecardState extends State<Quotecard> {
   Widget build(BuildContext context) {
     return Flexible(
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
           Container(
+            color: kSilverColor,
             height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
             margin: EdgeInsets.symmetric(
               horizontal: kSpacingUnit * 3,
             ).copyWith(
               top: kSpacingUnit * 2,
               bottom: kSpacingUnit * 2,
             ),
-            child: quotes.length == 0
-                ? Center(
-                    child: Text('Hoolup Nigga...'),
-                  )
-                : ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    key: listKey,
-                    itemCount: quoteTiles.length,
-                    itemBuilder: (context, index) {
-                      return quoteTiles[index];
-                    }),
+            child: ListView.builder(
+                physics: BouncingScrollPhysics(),
+                key: listKey,
+                itemCount: quoteTiles.length,
+                itemBuilder: (context, index) {
+                  return quoteTiles[index];
+                }),
           ),
         ],
       ),

@@ -11,7 +11,20 @@ const kSecondaryTextColor = const Color(0xFFB9B8CD);
 final kCardShadow = BoxShadow(
   color: Color.fromRGBO(0, 0, 0, 0.05),
   blurRadius: 20.w,
-  offset: Offset(10.w, 10.w),
+  offset: Offset(
+    3.0,
+    3.0,
+  ),
+);
+
+final kContShadow = BoxShadow(
+  color: Color.fromRGBO(0, 0, 0, 0.05).withOpacity(0.33),
+  blurRadius: 20.w,
+  spreadRadius: 1.w,
+  offset: Offset(
+    4.w,
+    6.w,
+  ),
 );
 
 final kFooterShadow = BoxShadow(

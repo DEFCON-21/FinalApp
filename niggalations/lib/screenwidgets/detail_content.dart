@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:niggalations/models/quotes.dart';
 import 'package:niggalations/models/global.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share/share.dart';
 
 class DetailContent extends StatelessWidget {
   final Quote quote;
@@ -11,20 +12,20 @@ class DetailContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Container(
-        width: 300,
+        width: 350,
         padding: EdgeInsets.symmetric(
           horizontal: kSpacingUnit * 4,
           vertical: kSpacingUnit * 4,
         ),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(kSpacingUnit * 5),
-            topRight: Radius.circular(kSpacingUnit * 5),
-            bottomLeft: Radius.circular(kSpacingUnit * 5),
-            bottomRight: Radius.circular(kSpacingUnit * 5),
-          ),
-        ),
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(kSpacingUnit * 5),
+              topRight: Radius.circular(kSpacingUnit * 5),
+              bottomLeft: Radius.circular(kSpacingUnit * 5),
+              bottomRight: Radius.circular(kSpacingUnit * 5),
+            ),
+            boxShadow: [kCardShadow]),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,8 +35,11 @@ class DetailContent extends StatelessWidget {
               Center(
                 child: Column(
                   children: [
-                    CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/nigdp.jpg'),
+                    Hero(
+                      tag: quote.quotation + quote.number,
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/nigdp.jpg'),
+                      ),
                     ),
                     SizedBox(height: kSpacingUnit * 2),
                     Text(

@@ -38,9 +38,9 @@ class _TagsState extends State<Tags> {
         height: kSpacingUnit * 4,
         width: kSpacingUnit * 12,
         decoration: BoxDecoration(
-          color: kAccentColor,
-          borderRadius: BorderRadius.circular(kSpacingUnit * 3),
-        ),
+            color: kAccentColor,
+            borderRadius: BorderRadius.circular(kSpacingUnit * 3),
+            boxShadow: [kCardShadow]),
         child: Center(
           child: Row(
             children: [

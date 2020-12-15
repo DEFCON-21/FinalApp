@@ -3,6 +3,7 @@ import 'package:niggalations/models/quotes.dart';
 import 'package:niggalations/models/global.dart';
 import 'package:niggalations/screenwidgets/detail_header.dart';
 import 'package:niggalations/screenwidgets/detail_content.dart';
+import 'package:niggalations/screenwidgets/detail_footer.dart';
 
 class Quotedetail extends StatelessWidget {
   final Quote quote;
@@ -21,6 +22,9 @@ class Quotedetail extends StatelessWidget {
                 DetailContent(quote: quote),
               ],
             ),
+            DetailFooter(
+              quote: quote,
+            )
           ],
         ),
       ),
