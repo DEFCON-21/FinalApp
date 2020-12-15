@@ -54,3 +54,6 @@ final kCaptionTextStyle = TextStyle(
   color: kSecondaryTextColor,
   fontSize: 12.sp,
 );
+final kquoteTextStyle = TextStyle(
+  fontSize: 15.sp,
+);
